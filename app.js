@@ -7,9 +7,9 @@ app.listen(process.env.PORT || 5000, () => {
     console.log("Listening on port 3000")
 })
 
-app.get('/cardDetails',(req,res) => {
+app.post('/cardDetails',(req,res) => {
 
-    console.log(req.body)
+console.log(req.body)
    const newUser = {
         name: req.body.name,
         email: req.body.email,
