@@ -33,7 +33,11 @@ app.get('/',(req,res) =>{
 })
 
 app.get('/posts',(req,res) =>{
+
+    const post = {
+        text:"Merhaba Deneniyorsunuz"
+    }
     console.log(req.body)
     console.log('Dolu olana girdik')
-    res.send('dolu dolu')
+    res.status(200).send(post);
 })
