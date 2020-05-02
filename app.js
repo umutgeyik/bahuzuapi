@@ -19,7 +19,7 @@ app.get('/cardDetails',(req,res) => {
     console.log(req.body.name)
     
     const answer = {
-        name: "Umut"
+        name: "Geldi"
     }
 
     res.status(200).send(answer)
