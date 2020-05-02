@@ -1,11 +1,9 @@
 const express = require('express')
 const app = express()
 
-
-
 app.use(express.json())
 
-app.listen(3000, () => {
+app.listen(5000, () => {
     console.log("Listening on port 3000")
 })
 
@@ -27,7 +25,6 @@ app.post('/cardDetails',(req,res) => {
         res.status(250).send("SICTIN BASGANIMMM")
     }
 })
-
 
 app.get('/',(req,res) =>{
     console.log(req.body)
