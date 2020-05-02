@@ -9,14 +9,20 @@ app.listen(process.env.PORT || 5000, () => {
 
 app.get('/cardDetails',(req,res) => {
 
-//    console.log(req.body)
-  //  const newUser = {
-    //    name: req.body.name,
-      //  email: req.body.email,
-       // password: req.body.password,
-    //}
+    console.log(req.body)
+   const newUser = {
+        name: req.body.name,
+        email: req.body.email,
+        password: req.body.password,
+    }
 
-    res.status(200).send()
+    console.log(req.body.name)
+    
+    const answer = {
+        name: "Umut"
+    }
+
+    res.status(200).send(answer)
 })
 
 app.get('/',(req,res) =>{
@@ -30,5 +36,5 @@ app.get('/posts',(req,res) =>{
         text:"Merhaba Deneniyorsunuz"
     }
     console.log('Dolu olana girdik')
-    res.status(200).send()
+    res.status(200).send(post)
 })
