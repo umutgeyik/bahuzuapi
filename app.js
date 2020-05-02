@@ -32,5 +32,5 @@ app.get('/posts',(req,res) =>{
     }
     console.log(req.body)
     console.log('Dolu olana girdik')
-    res.status(200).send(post)
+    res.status(200).send()
 })
