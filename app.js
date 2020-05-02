@@ -15,13 +15,8 @@ app.get('/cardDetails',(req,res) => {
         email: req.body.email,
         password: req.body.password,
     }
-    console.log(req)
-    console.log(newUser.name)
-    if(newUser.name == 'Umut'){
-        res.status(200).send()
-    } else {
-        res.status(250).send("SICTIN BASGANIMMM")
-    }
+
+    res.status(200).send()
 })
 
 app.get('/',(req,res) =>{
@@ -37,5 +32,5 @@ app.get('/posts',(req,res) =>{
     }
     console.log(req.body)
     console.log('Dolu olana girdik')
-    res.status(200).send(post);
+    res.status(200).send(post)
 })
