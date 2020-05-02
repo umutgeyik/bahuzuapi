@@ -17,7 +17,6 @@ app.get('/cardDetails',(req,res) => {
     }
     console.log(req)
     console.log(newUser.name)
-    console.log(newUser.orhunc)
     if(newUser.name == 'Umut'){
         res.status(200).send()
     } else {
