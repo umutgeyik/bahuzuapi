@@ -10,13 +10,15 @@ app.listen(process.env.PORT || 5000, () => {
 app.post('/cardDetails',(req,res) => {
 
 console.log(req.body)
-   const newUser = {
-        name: req.body.name,
-        email: req.body.email,
-        password: req.body.password,
+   const newRequest = {
+        cardHolderName: req.body.cardHolderName,
+        cardNumber: req.body.cardNumber,
+        cvc: req.body.cvc,
+        expiration: req.body.expiration,
+        price: req.body.price,
     }
 
-    console.log(req.body.name)
+    console.log(req.body.price)
     
     const answer = {
         name: "Geldi"
