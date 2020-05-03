@@ -23,7 +23,7 @@ console.log(req.body)
         cardNumber: req.body.cardNumber,
         cvc: req.body.cvc,
         expirationMonth: req.body.expirationMonth,
-        expirationYear: req.body.expirationMonth,
+        expirationYear: req.body.expirationYear,
         price: req.body.price,
     }
 
