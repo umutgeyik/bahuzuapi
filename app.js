@@ -142,7 +142,7 @@ app.post('/callback',(req,res) =>{
     }, function (err, result) {
         console.log(err, result);
         var providerOne = '<!DOCTYPE html>\n<html>\n<body>\n<h1>' + result.status + '</h1>\n</body>\n</html>\n<input type="button" value="Say hello" onClick="showAndroidToast(\'Hello Android!\')" />\n<script type="text/javascript">\nfunction showAndroidToast(toast) {\nAndroid.showToast(toast);\n}\n</script>'
-        res.send(provideOne)
+        res.send(providerOne)
     });
 })
 
