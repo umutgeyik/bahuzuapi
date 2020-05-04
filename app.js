@@ -157,7 +157,7 @@ app.get('/',(req,res) =>{
         basketId: 'B67832',
         paymentChannel: Iyzipay.PAYMENT_CHANNEL.WEB,
         paymentGroup: Iyzipay.PAYMENT_GROUP.PRODUCT,
-        callbackUrl: 'http://localhost:5000/callback',
+        callbackUrl: 'https://bahuzudenemeapp.herokuapp.com/callback',
         paymentCard: {
             cardHolderName: 'John Doe',
             cardNumber: '5528790000000008',
@@ -228,7 +228,7 @@ app.get('/',(req,res) =>{
         let data = result.threeDSHtmlContent;
         let buff = new Buffer(data, 'base64');
         let text = buff.toString('ascii');
-        res.status(200).send(text)
+        res.status(200).send(result)
     });
 
 })
