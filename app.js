@@ -141,7 +141,8 @@ app.post('/callback',(req,res) =>{
         conversationData: req.body.conversationData
     }, function (err, result) {
         console.log(err, result);
-        res.send(result.status)
+        var providerOne = '<!DOCTYPE html>\n<html>\n<body>\n<h1>' + result.status + '</h1>\n</body>\n</html>\n<input type="button" value="Say hello" onClick="showAndroidToast(\'Hello Android!\')" />\n<script type="text/javascript">\nfunction showAndroidToast(toast) {\nAndroid.showToast(toast);\n}\n</script>'
+        res.send(provideOne)
     });
 })
 
@@ -225,9 +226,9 @@ app.get('/',(req,res) =>{
     
     iyzipay.threedsInitialize.create(request, function (err, result) {
         console.log(err, result);
-        let data = result.threeDSHtmlContent;
-        let buff = new Buffer(data, 'base64');
-        let text = buff.toString('ascii');
+        // let data = result.threeDSHtmlContent;
+        // let buff = new Buffer(data, 'base64');
+        // let text = buff.toString('ascii');
         res.status(200).send(result)
     });
 
