@@ -240,10 +240,10 @@ app.get('/',(req,res) =>{
     
     iyzipay.threedsInitialize.create(request, function (err, result) {
         console.log(err, result);
-        let data = result.threeDSHtmlContent;
-        let buff = new Buffer(data, 'base64');
-        let text = buff.toString('ascii');
-        res.status(200).send(text)
+        // let data = result.threeDSHtmlContent;
+        // let buff = new Buffer(data, 'base64');
+        // let text = buff.toString('ascii');
+        res.status(200).send(result)
     });
 
 })
