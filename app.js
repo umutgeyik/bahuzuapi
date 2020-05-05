@@ -33,6 +33,8 @@ dErrorCodes.set('5','Doğrulama yapılamıyor.')
 dErrorCodes.set('6','3-D Secure hatası.')
 dErrorCodes.set('7','Sistem hatası.')
 dErrorCodes.set('8','Bilinmeyen kart no.')
+dErrorCodes.set('failure','Basarisiz')
+dErrorCodes.set('success','Basarili')
 
 
 app.listen(process.env.PORT || 5000, () => {
@@ -154,8 +156,9 @@ app.post('/callback',(req,res) =>{
     }, function (err, result) {
         console.log(err, result);
         var userResponse = dErrorCodes.get(req.body.mdStatus)
+        var userSuccess = dErrorCodes.get(result.status)
         console.log(req.body.mdStatus)
-        var providerOne = '<!DOCTYPE html>\n<html>\n<head>\n<meta name="viewport" content="width=device-width, initial-scale=1">\n<style>\n.btn {\nborder: none;\ncolor: white;\npadding: 14px 28px;\nfont-size: 16px;\ncursor: pointer;\n}\n.info {background-color: #2196F3;} \n.info:hover {background: #0b7dda;}\n</style>\n</head>\n<body>\n<h1>' + result.status + '</h1>\n<p>' + userResponse + '</p>\n<button class="btn info" onClick="showAndroidToast">Kapat</button>\n<script type="text/javascript">\nfunction showAndroidToast(toast) {\nAndroid.showToast(toast);}\n</script>\n</body>\n</html>'
+        var providerOne = '<!DOCTYPE html>\n<html>\n<head>\n<meta name="viewport" content="width=device-width, initial-scale=1">\n<style>\n.btn {\nborder: none;\ncolor: white;\npadding: 14px 28px;\nfont-size: 16px;\ncursor: pointer;\n}\n.info {background-color: #2196F3;} \n.info:hover {background: #0b7dda;}\n</style>\n</head>\n<body>\n<h1>' + result.status + '</h1>\n<p>' + userResponse + '</p>\n<button class="btn info" onClick="showAndroidToast">Kapat</button>\n<script type="text/javascript">\nfunction showAndroidToast() {\nAndroid.showToast();}\n</script>\n</body>\n</html>'
         res.send(providerOne)
     });
 })
