@@ -23,6 +23,18 @@ var iyzipay = new Iyzipay({
     uri: 'https://sandbox-api.iyzipay.com'
 });
 
+var dErrorCodes = new Map();
+dErrorCodes.set('0','3-D Secure imzası geçersiz veya doğrulama')
+dErrorCodes.set('1','Odeme basariyla gerceklestirildi.')
+dErrorCodes.set('2','Kart sahibi veya bankası sisteme kayıtlı değil.')
+dErrorCodes.set('3','Kartın bankası sisteme kayıtlı değil.')
+dErrorCodes.set('4','Doğrulama denemesi, kart sahibi sisteme daha sonra kayıt olmayı seçmiş.')
+dErrorCodes.set('5','Doğrulama yapılamıyor.')
+dErrorCodes.set('6','3-D Secure hatası.')
+dErrorCodes.set('7','Sistem hatası.')
+dErrorCodes.set('8','Bilinmeyen kart no.')
+
+
 app.listen(process.env.PORT || 5000, () => {
     console.log("Listening on port 3000")
 })
@@ -141,7 +153,9 @@ app.post('/callback',(req,res) =>{
         conversationData: req.body.conversationData
     }, function (err, result) {
         console.log(err, result);
-        var providerOne = '<!DOCTYPE html>\n<html>\n<body>\n<h1>' + result.status + '</h1>\n</body>\n</html>\n<input type="button" value="Say hello" onClick="showAndroidToast(\'Hello Android!\')" />\n<script type="text/javascript">\nfunction showAndroidToast(toast) {\nAndroid.showToast(toast);\n}\n</script>'
+        var userResponse = dErrorCodes.get(req.body.mdStatus)
+        console.log(req.body.mdStatus)
+        var providerOne = '<!DOCTYPE html>\n<html>\n<head>\n<meta name="viewport" content="width=device-width, initial-scale=1">\n<style>\n.btn {\nborder: none;\ncolor: white;\npadding: 14px 28px;\nfont-size: 16px;\ncursor: pointer;\n}\n.info {background-color: #2196F3;} \n.info:hover {background: #0b7dda;}\n</style>\n</head>\n<body>\n<h1>' + result.status + '</h1>\n<p>' + userResponse + '</p>\n<button class="btn info" onClick="showAndroidToast">Kapat</button>\n<script type="text/javascript">\nfunction showAndroidToast(toast) {\nAndroid.showToast(toast);}\n</script>\n</body>\n</html>'
         res.send(providerOne)
     });
 })
@@ -226,10 +240,10 @@ app.get('/',(req,res) =>{
     
     iyzipay.threedsInitialize.create(request, function (err, result) {
         console.log(err, result);
-        // let data = result.threeDSHtmlContent;
-        // let buff = new Buffer(data, 'base64');
-        // let text = buff.toString('ascii');
-        res.status(200).send(result)
+        let data = result.threeDSHtmlContent;
+        let buff = new Buffer(data, 'base64');
+        let text = buff.toString('ascii');
+        res.status(200).send(text)
     });
 
 })
