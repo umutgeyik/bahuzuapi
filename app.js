@@ -158,7 +158,7 @@ app.post('/callback',(req,res) =>{
         var userResponse = dErrorCodes.get(req.body.mdStatus)
         var userSuccess = dErrorCodes.get(result.status)
         console.log(req.body.mdStatus)
-        var providerOne = '<!DOCTYPE html>\n<html>\n<head>\n<meta name="viewport" content="width=device-width, initial-scale=1">\n<style>\n.btn {\nborder: none;\ncolor: white;\npadding: 14px 28px;\nfont-size: 16px;\ncursor: pointer;\n}\n.info {background-color: #2196F3;} \n.info:hover {background: #0b7dda;}\n</style>\n</head>\n<body>\n<h1>' + userSuccess + '</h1>\n<p>' + userResponse + '</p>\n<button class="btn info" input type="button" onClick="showAndroidToast">Kapat</button>\n<script type="text/javascript">\nfunction showAndroidToast() {\nAndroid.showToast();}\n</script>\n</body>\n</html>'
+        var providerOne = '<!DOCTYPE html>\n<html>\n<head>\n<meta name="viewport" content="width=device-width, initial-scale=1">\n<style>\n.btn {\nborder: none;\ncolor: white;\npadding: 14px 28px;\nfont-size: 16px;\ncursor: pointer;\n}\n.info {background-color: #2196F3;} \n.info:hover {background: #0b7dda;}\n</style>\n</head>\n<body>\n<h1>' + userSuccess + '</h1>\n<p>' + userResponse + '</p>\n<button class="btn info" input type="button" onClick="showAndroidToast">Kapat</button>\n</body>\n</html>\n<script type="text/javascript">\nfunction showAndroidToast() {\nAndroid.showToast();}\n</script>'
         res.send(providerOne)
     });
 })
