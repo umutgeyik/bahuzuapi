@@ -159,7 +159,7 @@ app.post('/callback',(req,res) =>{
         var userSuccess = dErrorCodes.get(result.status)
         console.log(req.body.mdStatus)
         var providerOne = '<!DOCTYPE html>\n<html>\n<head>\n<meta name="viewport" content="width=device-width, initial-scale=1">\n</head>\n<body>\n<h1>' + userSuccess + '</h1>\n<p>' + userResponse + '</p>\n</body>\n</html>\n<input type="button" value="Kapat" onClick="showAndroidToast()"/>\n<script type="text/javascript">\nfunction showAndroidToast() {\nAndroid.showToast();}\n</script>'
-        var denemeBla = '<input type="button" value="Say hello" onClick="showAndroidToast(\'Hello Android!\')" />\n<script type="text/javascript">\nfunction showAndroidToast(toast) {\nAndroid.showToast(toast);\n}\n</script>'
+        var denemeBla = '<!DOCTYPE html>\n<html>\n<head>\n<meta name="viewport" content="width=device-width, initial-scale=1">\n</head>\n<body>\n<h1>' + userSuccess + '</h1>\n<p>' + userResponse + '</p>\n</body>\n</html>\n<input type="button" value="Say hello" onClick="showAndroidToast(\'Hello Android!\')" />\n<script type="text/javascript">\nfunction showAndroidToast(toast) {\nAndroid.showToast(toast);\n}\n</script>'
         console.log(providerOne)
         res.send(denemeBla)
     });
