@@ -38,7 +38,7 @@ dErrorCodes.set('success','Basarili')
 
 
 app.listen(process.env.PORT || 5000, () => {
-    console.log("Listening on port 3000")
+    console.log("Listening...")
 })
 
 app.post('/cardDetails',(req,res) => {
@@ -106,11 +106,7 @@ console.log(req.body)
         console.log('IYZICO RESPONSE :: ')
         console.log(result);
 
-
-        let data = result.threeDSHtmlContent;
-        let buff = new Buffer(data, 'base64');
-        let text = buff.toString('ascii');
-        res.status(200).send(text)    
+        res.status(200).send(result)    
     });
 
     
