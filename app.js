@@ -58,7 +58,7 @@ console.log(req.body)
         paidPrice: newRequest.price,
         currency: Iyzipay.CURRENCY.TRY,
         installment: '1',
-        callbackUrl: 'http://localhost:5000/threedresponse',
+        callbackUrl: 'https://bahuzudenemeapp.herokuapp.com/callback',
         paymentCard: {
             cardHolderName: newRequest.cardHolderName,
             cardNumber: newRequest.cardNumber,
@@ -158,9 +158,8 @@ app.post('/callback',(req,res) =>{
         var userResponse = dErrorCodes.get(req.body.mdStatus)
         var userSuccess = dErrorCodes.get(result.status)
         console.log(req.body.mdStatus)
-        var providerOne = '<!DOCTYPE html>\n<html>\n<head>\n<meta name="viewport" content="width=device-width, initial-scale=1">\n</head>\n<body>\n<h1>' + userSuccess + '</h1>\n<p>' + userResponse + '</p>\n</body>\n</html>\n<input type="button" value="Kapat" onClick="showAndroidToast()"/>\n<script type="text/javascript">\nfunction showAndroidToast() {\nAndroid.showToast();}\n</script>'
-        var denemeBla = '<!DOCTYPE html>\n<html>\n<head>\n<meta name="viewport" content="width=device-width, initial-scale=1">\n</head>\n<body>\n<h1>' + userSuccess + '</h1>\n<p>' + userResponse + '</p>\n</body>\n</html>\n<input type="button" value="Say hello" onClick="showAndroidToast(\'Hello Android!\')" />\n<script type="text/javascript">\nfunction showAndroidToast(toast) {\nAndroid.showToast(toast);\n}\n</script>'
-        console.log(providerOne)
+        //var providerOne = '<!DOCTYPE html>\n<html>\n<head>\n<meta name="viewport" content="width=device-width, initial-scale=1">\n</head>\n<body>\n<h1>' + userSuccess + '</h1>\n<p>' + userResponse + '</p>\n</body>\n</html>\n<input type="button" value="Kapat" onClick="showAndroidToast()"/>\n<script type="text/javascript">\nfunction showAndroidToast() {\nAndroid.showToast();}\n</script>'
+        var denemeBla = '<!DOCTYPE html>\n<html>\n<head>\n<meta name="viewport" content="width=device-width, initial-scale=1">\n</head>\n<body>\n<h1>' + userSuccess + '</h1>\n<p>' + userResponse + '</p>\n</body>\n</html>\n<input type="button" value="Kapat" onClick="showAndroidToast(\'Hello Android!\')" />\n<script type="text/javascript">\nfunction showAndroidToast(toast) {\nAndroid.showToast(toast);\n}\n</script>'
         res.send(denemeBla)
     });
 })
