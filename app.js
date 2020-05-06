@@ -68,7 +68,7 @@ console.log(req.body)
             registerCard: '0'
         },
         buyer: {
-            id: 'BY789',
+            id: 'default',
             name: 'Umut',
             surname: 'Gyk',
             email: 'email@email.com',
@@ -155,7 +155,7 @@ app.post('/callback',(req,res) =>{
         var userSuccess = dErrorCodes.get(result.status)
         console.log(req.body.mdStatus)
         //var providerOne = '<!DOCTYPE html>\n<html>\n<head>\n<meta name="viewport" content="width=device-width, initial-scale=1">\n</head>\n<body>\n<h1>' + userSuccess + '</h1>\n<p>' + userResponse + '</p>\n</body>\n</html>\n<input type="button" value="Kapat" onClick="showAndroidToast()"/>\n<script type="text/javascript">\nfunction showAndroidToast() {\nAndroid.showToast();}\n</script>'
-        var denemeBla = '<!DOCTYPE html>\n<html>\n<head>\n<meta name="viewport" content="width=device-width, initial-scale=1">\n</head>\n<body>\n<h1>' + userSuccess + '</h1>\n<p>' + userResponse + '</p>\n</body>\n</html>\n<input type="button" value="Kapat" onClick="showAndroidToast(\'Hello Android!\')" />\n<script type="text/javascript">\nfunction showAndroidToast(toast) {\nAndroid.showToast(toast);\n}\n</script>'
+        var denemeBla = '<!DOCTYPE html>\n<html>\n<head>\n<meta name="viewport" content="width=device-width, initial-scale=1">\n</head>\n<body>\n<h1>' + userSuccess + '</h1>\n<p>' + userResponse + '</p>\n</body>\n</html>\n<input type="button" value="Kapat" onClick="showAndroidToast('+ userSuccess +')" />\n<script type="text/javascript">\nfunction showAndroidToast(toast) {\nAndroid.showToast(toast);\n}\n</script>'
         res.send(denemeBla)
     });
 })
@@ -248,14 +248,7 @@ app.get('/',(req,res) =>{
 
 })
 
-app.get('/posts',(req,res) =>{
 
-    const post = {
-        text:"Merhaba Deneniyorsunuz"
-    }
-    console.log('Dolu olana girdik')
-    res.status(200).send(post)
-})
 
 
 
