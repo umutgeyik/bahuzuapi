@@ -158,8 +158,8 @@ app.post('/callback',(req,res) =>{
         console.log(req.body.mdStatus)
         //var providerOne = '<!DOCTYPE html>\n<html>\n<head>\n<meta name="viewport" content="width=device-width, initial-scale=1">\n</head>\n<body>\n<h1>' + userSuccess + '</h1>\n<p>' + userResponse + '</p>\n</body>\n</html>\n<input type="button" value="Kapat" onClick="showAndroidToast()"/>\n<script type="text/javascript">\nfunction showAndroidToast() {\nAndroid.showToast();}\n</script>'
         
-        //res.send(denemeBla)
-        res.send(sonuc)
+        res.send(denemeBla)
+        //res.send(sonuc)
     });
 })
 
