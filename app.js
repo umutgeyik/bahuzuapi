@@ -68,9 +68,9 @@ console.log(req.body)
             registerCard: '0'
         },
         buyer: {
-            id: 'default',
-            name: 'Umut',
-            surname: 'Gyk',
+            id: 'req.body.userUid',
+            name: 'req.body.userUid',
+            surname: 'default',
             email: 'email@email.com',
             identityNumber: '74300864791',
             registrationAddress: 'Nidakule Göztepe, Merdivenköy Mah. Bora Sok. No:1',
@@ -92,8 +92,8 @@ console.log(req.body)
         },
         basketItems: [
             {
-                id: 'BI101',
-                name: 'Binocular',
+                id: 'req.body.doctorUid',
+                name: 'req.body.doctorUid',
                 category1: 'Collectibles',
                 category2: 'Accessories',
                 itemType: Iyzipay.BASKET_ITEM_TYPE.PHYSICAL,
@@ -103,9 +103,7 @@ console.log(req.body)
         ]
     };
     iyzipay.threedsInitialize.create(request, function (err, result) {
-        console.log('IYZICO RESPONSE :: ')
         console.log(result);
-
         res.status(200).send(result)    
     });
 
@@ -138,9 +136,6 @@ app.get('/threedresponse',function(req,res) {
     //res.send(`Full name is:${req.session.threedresponse.threeDSHtmlContent} ${'SELAM'}.`);
 })
 
-app.post('/render',(req,res) =>{
-
-})
 
 app.post('/callback',(req,res) =>{
     console.log(req.body)
@@ -155,13 +150,16 @@ app.post('/callback',(req,res) =>{
         var userSuccess = dErrorCodes.get(result.status)
         if(result.status == 'success'){
             var denemeBla = '<!DOCTYPE html>\n<html>\n<head>\n<meta name="viewport" content="width=device-width, initial-scale=1">\n</head>\n<body>\n<h1>' + userSuccess + '</h1>\n<p>' + userResponse + '</p>\n</body>\n</html>\n<input type="button" value="Kapat" onClick="showAndroidToast(\'0\')" />\n<script type="text/javascript">\nfunction showAndroidToast(toast) {\nAndroid.showToast(toast);\n}\n</script>'
+            var sonuc = '1'
         } else {
             var denemeBla = '<!DOCTYPE html>\n<html>\n<head>\n<meta name="viewport" content="width=device-width, initial-scale=1">\n</head>\n<body>\n<h1>' + userSuccess + '</h1>\n<p>' + userResponse + '</p>\n</body>\n</html>\n<input type="button" value="Kapat" onClick="showAndroidToast(\'1\')" />\n<script type="text/javascript">\nfunction showAndroidToast(toast) {\nAndroid.showToast(toast);\n}\n</script>'
+            var sonuc = '0'
         }
         console.log(req.body.mdStatus)
         //var providerOne = '<!DOCTYPE html>\n<html>\n<head>\n<meta name="viewport" content="width=device-width, initial-scale=1">\n</head>\n<body>\n<h1>' + userSuccess + '</h1>\n<p>' + userResponse + '</p>\n</body>\n</html>\n<input type="button" value="Kapat" onClick="showAndroidToast()"/>\n<script type="text/javascript">\nfunction showAndroidToast() {\nAndroid.showToast();}\n</script>'
         
-        res.send(denemeBla)
+        //res.send(denemeBla)
+        res.send(sonuc)
     });
 })
 
