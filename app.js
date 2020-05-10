@@ -51,8 +51,11 @@ console.log(req.body)
         expirationMonth: req.body.expirationMonth,
         expirationYear: req.body.expirationYear,
         price: req.body.price,
+        doctorUid: req.body.doctorUid,
+        userUid: req.body.userUid
     }
-
+    console.log('DOCTOR UID ::: ')
+    console.log(newRequest.doctorUid)
     var request = {
         price: newRequest.price,
         paidPrice: newRequest.price,
@@ -68,8 +71,8 @@ console.log(req.body)
             registerCard: '0'
         },
         buyer: {
-            id: 'req.body.userUid',
-            name: 'req.body.userUid',
+            id: newRequest.userUid,
+            name: newRequest.userUid,
             surname: 'default',
             email: 'email@email.com',
             identityNumber: '74300864791',
@@ -92,8 +95,8 @@ console.log(req.body)
         },
         basketItems: [
             {
-                id: 'req.body.doctorUid',
-                name: 'req.body.doctorUid',
+                id: newRequest.doctorUid,
+                name: newRequest.doctorUid,
                 category1: 'Collectibles',
                 category2: 'Accessories',
                 itemType: Iyzipay.BASKET_ITEM_TYPE.PHYSICAL,
@@ -138,18 +141,11 @@ app.post('/callback',(req,res) =>{
         var userResponse = dErrorCodes.get(req.body.mdStatus)
         var userSuccess = dErrorCodes.get(result.status)
         var denemeBla = '<!DOCTYPE html>\n<html>\n<head>\n<meta name="viewport" content="width=device-width, initial-scale=1">\n</head>\n<body>\n<h1>' + userSuccess + '</h1>\n<p>' + userResponse + '</p>\n</body>\n</html>'
-        if(result.status == 'success'){
-            
-            var sonuc = '1'
-        } else {
-            //var denemeBla = '<!DOCTYPE html>\n<html>\n<head>\n<meta name="viewport" content="width=device-width, initial-scale=1">\n</head>\n<body>\n<h1>' + userSuccess + '</h1>\n<p>' + userResponse + '</p>\n</body>\n</html>\n<input type="button" value="Kapat" onClick="showAndroidToast(\'1\')" />\n<script type="text/javascript">\nfunction showAndroidToast(toast) {\nAndroid.showToast(toast);\n}\n</script>'
-            var sonuc = '0'
-        }
+       
         console.log(req.body.mdStatus)
-        //var providerOne = '<!DOCTYPE html>\n<html>\n<head>\n<meta name="viewport" content="width=device-width, initial-scale=1">\n</head>\n<body>\n<h1>' + userSuccess + '</h1>\n<p>' + userResponse + '</p>\n</body>\n</html>\n<input type="button" value="Kapat" onClick="showAndroidToast()"/>\n<script type="text/javascript">\nfunction showAndroidToast() {\nAndroid.showToast();}\n</script>'
         
         res.send(denemeBla)
-        //res.send(sonuc)
+     
     });
 })
 
